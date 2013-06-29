@@ -32,11 +32,15 @@ Make sure problems are correct in your machine:
 ```mix test```
 
 
-To see the list of all current Problems with their definitions execute
-from the root of the project:
+You can create a command tool by executing:
 
 ```mix escriptize```
 
-and 
+The command tool is called __euler_on_elixir__ currently it provides the
+following commands:
 
-```./euler_on_elixir```
+```
+ Usage:
+  euler_on_elixir definitions  to see the definitions of the problems
+  euler_on_elixir available    to see the number of the available problems
+```
