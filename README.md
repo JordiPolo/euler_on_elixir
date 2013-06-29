@@ -34,6 +34,9 @@ Make sure problems are correct in your machine:
 
 To see the list of all current Problems with their definitions execute
 from the root of the project:
+
 ```mix escriptize```
+
 and 
+
 ```./euler_on_elixir```
