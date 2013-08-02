@@ -11,14 +11,14 @@ defmodule Euler.Problem3 do
   Prime factors by definition can not be divided by anything else,
   they have to appear en the list of factors of the number, almost by definition.
 
-  So we are doing a 'lineal search' we divide the number by every number from 
+  So we are doing a 'lineal search' we divide the number by every number from
   2 to the number itself. This will eventually pass throught all factors
   and thus by all the prime factors.
 
   To speed this up, each time we find a factor, we divide the number by it.
   Because the result number still needs to be multiplied by the prime, we know
   we will find it in the new number.
-  
+
   Note that this algorithm will not find all the posible factors. It will find only
   the prime factors.
   For instance, if we have 12, we will do  12,2 -> 6,2 -> 3,2 -> 3,3 and stop there.
@@ -40,7 +40,7 @@ defmodule Euler.Problem3 do
   """
   def solve(number) do
     number
-    |> find_divisors
+    |> Euler.Maths.factorization
     |> Enum.max
   end
 
@@ -48,20 +48,6 @@ defmodule Euler.Problem3 do
     IO.puts solve(600_851_475_143)
   end
 
-  defp find_divisors(number) do
-    do_find_divisors(number,2,[])
-  end
 
-  defp do_find_divisors(number, divisor, acc) when divisor > number do
-    acc
-  end
-
-  defp do_find_divisors(number, divisor, acc) when rem(number,divisor) == 0 do
-    do_find_divisors( div(number, divisor), divisor, [divisor|acc])
-  end
-
-  defp do_find_divisors(number, divisor, acc) when rem(number, divisor) != 0 do
-    do_find_divisors(number, divisor+1, acc)
-  end
 end
 
