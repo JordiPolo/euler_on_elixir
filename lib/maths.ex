@@ -38,6 +38,21 @@ defmodule Euler.Maths do
   end
 
   @doc """
+  Sums all the values on this vector
+
+  ## Examples
+  iex> Euler.Maths.sum([5,2,2])
+  9
+
+  iex> Euler.Maths.sum [3,3,2]
+  8
+  """
+  def sum(list) do
+  	Enum.reduce list, 0, fn(val,acc) -> acc + val end
+  end
+
+
+  @doc """
   Finds the factorization of a number.
 
   ## Examples
