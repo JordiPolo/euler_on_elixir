@@ -3,7 +3,7 @@ defmodule Euler do
     docs = Enum.map problems_names, problem_doc(&1)
     data = Enum.zip problems_names, docs
     IO.puts("")
-    Enum.map data, fn {problem_name, doc} -> 
+    Enum.map data, fn {problem_name, doc} ->
       IO.puts("Euler #{problem_name}:")
       IO.puts(doc)
       IO.puts("")
@@ -11,7 +11,7 @@ defmodule Euler do
   end
 
   def print_problems_numbers do
-    IO.puts "Currently we have solutions of the problems:"
+    IO.puts "Currently we have solutions for the problems:"
     Enum.map problems, IO.puts &1
   end
 
@@ -29,8 +29,7 @@ defmodule Euler do
 
 
   defp valid_filename?(filename) do
-    current_file = Path.basename __FILE__
-    filename != current_file && !String.starts_with?(filename, "_")
+    String.starts_with?(filename, "0")
   end
 
   defp problems_names do
