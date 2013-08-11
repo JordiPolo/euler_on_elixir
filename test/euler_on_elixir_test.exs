@@ -10,4 +10,5 @@ defmodule EulerOnElixirTest do
   doctest Euler.Problem4
   doctest Euler.Problem5
   doctest Euler.Problem6
+  doctest Euler.Problem7
 end
