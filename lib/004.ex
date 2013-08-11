@@ -1,7 +1,7 @@
 defmodule Euler.Problem4 do
   @moduledoc """
     http://projecteuler.net/problem=4
-    A palindromic number reads the same both ways. 
+    A palindromic number reads the same both ways.
     The largest palindrome made from the product of two 2-digit numbers is 9009 = 91x99.
     Find the largest palindrome made from the product of two 3-digit numbers.
   """
@@ -13,7 +13,7 @@ defmodule Euler.Problem4 do
   - The numbers will start with 9
   - At least one of the numbers will be multiple of 11
 
-  Using these properties 
+  Using these properties
   I hope to make this faster than the usual naive version
 
   ## Examples
@@ -43,7 +43,7 @@ defmodule Euler.Problem4 do
   end
 
   defp multiply_everything([term1|term2]) do
-    Enum.reduce(term2, [], fn(value, acc) -> 
+    Enum.reduce(term2, [], fn(value, acc) ->
       multiplied = Enum.map(term1, &1 * value)
       palindromes = Enum.filter(multiplied, palindrome?(&1))
       [acc|palindromes]
@@ -66,20 +66,7 @@ defmodule Euler.Problem4 do
   """
   def palindrome?(number) do
     string = integer_to_binary(number)
-    string == reverse(string)
-  end
-
-  defp reverse(string) do
-    do_reverse("", string)
-  end
-
-  defp do_reverse(reversed, nil) do
-    reversed
-  end
-
-  defp do_reverse(reverse_string, string) do
-    last = String.last string
-    do_reverse(reverse_string <> last, String.slice(string,0,size(string)-1))
+    string == String.reverse(string)
   end
 
 end
