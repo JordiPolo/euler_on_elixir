@@ -29,7 +29,7 @@ defmodule Euler.Problem7 do
   13
   """
   def solve(max_number) do
-	  do_solve([7,5,3,2],9,max_number)
+    do_solve([7,5,3,2],9,max_number)
   end
 
   def print do
