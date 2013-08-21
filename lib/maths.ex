@@ -84,6 +84,20 @@ defmodule Euler.Maths do
   #TODO Create a module which is a stream of prime numbers when streams can work
   #with infinite number of elements
   defmodule Primes do
+	  @moduledoc """
+	  We want to find primes as fast as possible.
+
+	  Prime is a number which can only be divided by itself and 1.
+	  As the divisors are alwas simetric with respect to Math.sqr(number)
+	  We know that if we have not found any divisor till the sqrt then there will be not divisors
+	  afterwards.
+
+	  Also, any nonprime number can only be divided by previous found primes.
+
+	  Also, we do not need to test every number, only odd numbers as even number are all non-prime
+
+	  These two properties reduce drastically the number of divisions needed.
+	  """
 
 	  @doc """
 	  Generates primes till a condition is fulfill
