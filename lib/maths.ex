@@ -114,7 +114,7 @@ defmodule Euler.Maths do
 	  {[5, 3, 2], 7}
 
 	  iex> Euler.Maths.Primes.generate([7, 5, 3, 2], 9)
-	  {[11,7, 5, 3, 2], 13}
+	  {[7, 5, 3, 2], 11}
 
 	  """
 	  def generate(list, current) do
@@ -128,9 +128,10 @@ defmodule Euler.Maths do
 		  new_current = next_possible_prime(current)
 
 		  if prime?(current, divisors) do
-			  {[current|list], new_current}
+		    {[current|list], new_current}
 		  else
-		    generate(list, new_current)
+		    {list, new_current}
+		   # generate(list, new_current)
 		  end
 	  end
 
