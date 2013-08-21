@@ -29,53 +29,14 @@ defmodule Euler.Problem7 do
   13
   """
   def solve(max_number) do
-    do_solve([7,5,3,2],9,max_number)
+	number_of_primes_found_condition = fn list, _ -> length(list) == max_number end
+    Euler.Maths.Primes.generate_till([7,5,3,2], 9, number_of_primes_found_condition)
+	|> hd
   end
 
   def print do
     IO.puts solve(10001)
   end
-
-  defp do_solve(list,_,size_limit) when length(list) == size_limit do
-	hd(list)
-  end
-
-  defp do_solve(list, current,size_limit) do
-	  #TODO: make my own squares table to avoid this processing
-	  square_root = ceiling(:math.sqrt(current))
-	  possible_divisors = Enum.filter(list, fn x -> x<=square_root end)
-	  # smaller divisors have higher chances of dividing
-	  divisors = Enum.reverse(possible_divisors)
-
-	  # current + 2 because we do not want to test even numbers
-	  if prime?(current, divisors) do
-		do_solve([current|list], current+2, size_limit)
-	  else
-	    do_solve(list, current+2, size_limit)
-	  end
-  end
-
-  defp prime?(_, possible_divisors) when length(possible_divisors) == 0 do
-	  true
-  end
-
-  defp prime?(number, possible_divisors) do
-	  [head|tail] = possible_divisors
-	  !divisible_by?(number,head) && prime?(number, tail)
-  end
-
-  defp divisible_by?(number, divisor) do
-	  rem(number,divisor) == 0
-  end
-
-  defp ceiling(number) when is_integer(number) do
-    number
-  end
-
-  defp ceiling(number) when is_float(number) do
-	trunc(number) + 1
-  end
-
 
 
 end

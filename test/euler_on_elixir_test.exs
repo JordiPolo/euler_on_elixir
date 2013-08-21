@@ -4,6 +4,7 @@ defmodule EulerOnElixirTest do
   use ExUnit.Case, async: true
   #EulerOnElixir.modules |> Enum.map(doctest &1)
   doctest Euler.Maths
+  doctest Euler.Maths.Primes
   doctest Euler.Problem1
   doctest Euler.Problem2
   doctest Euler.Problem3

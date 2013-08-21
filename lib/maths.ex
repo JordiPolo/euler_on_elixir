@@ -81,4 +81,85 @@ defmodule Euler.Maths do
     do_factorization(number, divisor+1, acc)
   end
 
+  #TODO Create a module which is a stream of prime numbers when streams can work
+  #with infinite number of elements
+  defmodule Primes do
+
+	  @doc """
+	  Generates primes till a condition is fulfill
+	  param list : the current generated list of primes
+	  current : current number under inspection
+	  condition: condition to stop the generation on, it receives the list and the current
+      returns the ordered list of primes, biggest number first.
+
+	  ## Examples
+	  iex> Euler.Maths.Primes.generate_till([3,2],5, fn l, c -> c == 9 end)
+	  [7, 5, 3, 2]
+	  """
+	  def generate_till(list, current, condition) do
+	    if condition.(list, current) do
+		  list
+	    else
+	      {new_list, new_current} = generate(list, current)
+		  generate_till(new_list, new_current, condition)
+	    end
+	  end
+
+      @doc """
+	  Generates the next prime in the sequence of natural number not contained in the list
+	  Returns the list with the next prime and the next possible natural number after it
+
+	  ## Examples
+	  iex> Euler.Maths.Primes.generate([3,2],5)
+	  {[5, 3, 2], 7}
+
+	  iex> Euler.Maths.Primes.generate([7, 5, 3, 2], 9)
+	  {[11,7, 5, 3, 2], 13}
+
+	  """
+	  def generate(list, current) do
+		  #TODO: make my own squares table to avoid this processing
+		  square_root = ceiling(:math.sqrt(current))
+		  possible_divisors = Enum.filter(list, fn x -> x<=square_root end)
+		  # smaller divisors have higher chances of dividing
+		  divisors = Enum.reverse(possible_divisors)
+
+		  # current + 2 because we do not want to test even numbers
+		  new_current = next_possible_prime(current)
+
+		  if prime?(current, divisors) do
+			  {[current|list], new_current}
+		  else
+		    generate(list, new_current)
+		  end
+	  end
+
+	  #only non-even numbers can be primes
+	  defp next_possible_prime(number) do
+	    if even?(number) do
+		  number + 1
+	    else
+		  number + 2
+	    end
+	  end
+
+	  defp even?(number) do
+	    rem(number, 2) == 0
+	  end
+
+	  defp prime?(number, possible_divisors) do
+		  !Enum.any?(possible_divisors, fn divisor -> rem(number, divisor) == 0 end )
+	  end
+
+	  defp ceiling(number) when is_integer(number) do
+	    number
+	  end
+
+	  defp ceiling(number) when is_float(number) do
+		trunc(number) + 1
+	  end
+
+
+
+  end
 end
