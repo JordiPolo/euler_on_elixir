@@ -19,11 +19,17 @@ defmodule Euler.Problem10 do
     17
     """
   def solve(limit) do
-    Euler.Maths.Primes.generate_till([7,5,3,2], 9, fn list, current -> current >= limit end)
+    Euler.Maths.Primes.generate_till(fn _, current -> current >= limit end)
     |> Euler.Maths.sum
   end
 
   def print do
     IO.puts solve(2_000_000)
+  end
+
+  def timed_solve(limit) do
+    IO.puts inspect(:erlang.localtime())
+    IO.puts solve(limit)
+    IO.puts inspect(:erlang.localtime())
   end
 end

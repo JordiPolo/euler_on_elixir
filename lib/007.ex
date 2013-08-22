@@ -16,9 +16,8 @@ defmodule Euler.Problem7 do
   13
   """
   def solve(max_number) do
-	number_of_primes_found_condition = fn list, _ -> length(list) == max_number end
-    Euler.Maths.Primes.generate_till([7,5,3,2], 9, number_of_primes_found_condition)
-	|> hd
+    Euler.Maths.Primes.generate_till(fn list, _ -> length(list) == max_number end)
+	|> List.last
   end
 
   def print do
