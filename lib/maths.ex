@@ -115,10 +115,10 @@ defmodule Euler.Maths do
 
 	  defp generate_till(list, current, condition) do
 	    if condition.(list, current) do
-		  list
+		    list
 	    else
 	      {new_list, new_current} = generate(list, current)
-		  generate_till(new_list, new_current, condition)
+		    generate_till(new_list, new_current, condition)
 	    end
 	  end
 
@@ -145,7 +145,7 @@ defmodule Euler.Maths do
 		  new_current = current + 2 #next_possible_prime(current)
 
 		  if prime?(current, list) do
-		    {List.concat(list,[current]), new_current}
+		    {Enum.concat(list,[current]), new_current}
 		  else
 		    {list, new_current}
 		   # generate(list, new_current)
