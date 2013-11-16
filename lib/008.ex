@@ -68,7 +68,7 @@ defmodule Euler.Problem8 do
 	|> IO.puts
   end
 
-  defp do_solve(number_string, rest_string, current_max) when rest_string == "" do
+  defp do_solve(_, rest_string, current_max) when rest_string == "" do
     current_max
   end
 

@@ -17,7 +17,7 @@ defmodule Euler.Problem1 do
   """
   def solve(limit) do
     multiples = Enum.filter 1..(limit-1), fn x -> ((rem(x, 3) == 0) || (rem(x, 5) == 0)) end
-    Enum.reduce multiples, 0, &1 + &2
+    Enum.reduce multiples, 0, &(&1 + &2)
   end
 
   def print do

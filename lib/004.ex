@@ -44,8 +44,8 @@ defmodule Euler.Problem4 do
 
   defp multiply_everything([term1|term2]) do
     Enum.reduce(term2, [], fn(value, acc) ->
-      multiplied = Enum.map(term1, &1 * value)
-      palindromes = Enum.filter(multiplied, palindrome?(&1))
+      multiplied = Enum.map(term1, &(&1 * value))
+      palindromes = Enum.filter(multiplied, &(palindrome?(&1)))
       [acc|palindromes]
     end)
   end
