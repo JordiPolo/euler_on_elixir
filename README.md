@@ -1,5 +1,7 @@
 euler_on_elixir
 ===============
+[![Build
+Status](https://travis-ci.org/JordiPolo/euler_on_elixir.svg)](https://travis-ci.org/JordiPolo/euler_on_elixir)
 
 Solutions for Project Euler coded in Elixir.
 
