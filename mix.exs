@@ -4,6 +4,7 @@ defmodule EulerOnElixir.Mixfile do
   def project do
     [ app: :euler_on_elixir,
       version: "0.0.1",
+      elixir: "~> 0.12",
       name: "Euler on Elixir",
       source_url: "https://github.com/JordiPolo/euler_on_elixir",
       deps: deps ]
