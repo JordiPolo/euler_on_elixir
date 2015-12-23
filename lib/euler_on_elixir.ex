@@ -9,14 +9,14 @@ defmodule EulerOnElixir do
   defp parse_args(argv) do
       parse = OptionParser.parse(argv)
       case parse do
-        {_, [command]} -> command
+        {_, [command], _} -> command
         _              -> :hep
       end
   end
 
   defp run(:help) do
     IO.puts """
-      Usage: 
+      Usage:
         euler_on_elixir definitions  to see the definitions of the problems
         euler_on_elixir available    to see the number of the available problems
     """

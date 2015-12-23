@@ -58,7 +58,7 @@ defmodule Euler.Problem11 do
   def solve(data) do
     data
 	|> String.split("\n")
-	|> Enum.map(fn string -> Enum.map(String.split(string),fn x -> binary_to_integer(x) end) end)
+	|> Enum.map(fn string -> Enum.map(String.split(string),fn x -> Integer.to_string(x) end) end)
 	|> find_max_combination
   end
 

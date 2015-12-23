@@ -65,7 +65,7 @@ defmodule Euler.Problem4 do
   true
   """
   def palindrome?(number) do
-    string = integer_to_binary(number)
+    string = Integer.to_string(number)
     string == String.reverse(string)
   end
 
